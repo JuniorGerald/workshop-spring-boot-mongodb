@@ -20,25 +20,25 @@ import com.juniorgeraldo.workshopmongodb.services.PostService;
 import com.juniorgeraldo.workshopmongodb.services.UserService;
 
 @RestController
-@RequestMapping(value="/users")
-public class UserResource {
+@RequestMapping(value="/posts")
+public class PostResource {
 	
 	@Autowired
-	private UserService service;
+	private PostService service;
 	
-	@RequestMapping(method=RequestMethod.GET)
+/*	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<UserDTO>> findAll(){
 		List<User> list = service.findAll();
 		List<UserDTO> listDto = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
-	
+	*/
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<User> findById( @PathVariable String id){
-		User obj = service.findById(id);
+	public ResponseEntity<Post> findById( @PathVariable String id){
+		Post obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	
+	/*
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert( @RequestBody UserDTO objDto){
 		User obj = service.fromDTO(objDto);
@@ -67,4 +67,5 @@ public class UserResource {
 		User obj = service.findById(id);
 		return ResponseEntity.ok().body(obj.getPosts());
 	}
+	*/
 }
